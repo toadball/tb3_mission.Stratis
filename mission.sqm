@@ -116,7 +116,7 @@ class Mission
 					leader=1;
 					rank="LIEUTENANT";
 					skill=0.60000002;
-					init="[this,""INDinf"",""PL""] call tb3_fLoadout; group this setGroupID [""Copper 2'0""];";
+					init="[this,""ExampleSide"",""ExampleUnit""] call tb3_fLoadout; group this setGroupID [""Copper 2'0""];";
 					description="Platoon HQ | Platoon Commander";
 				};
 				class Item1
@@ -128,7 +128,7 @@ class Mission
 					vehicle="I_soldier_F";
 					player="PLAY CDG";
 					skill=0.60000002;
-					init="[this,""INDinf"",""SI""] call tb3_fLoadout; group this setGroupID [""Copper 2'0""];";
+					init="[this,""ExampleSide"",""ExampleUnit""] call tb3_fLoadout; group this setGroupID [""Copper 2'0""];";
 					description="Platoon HQ | Platoon Signaller";
 				};
 				class Item2
@@ -141,7 +141,7 @@ class Mission
 					player="PLAY CDG";
 					rank="SERGEANT";
 					skill=0.60000002;
-					init="[this,""INDinf"",""PS""] call tb3_fLoadout; group this setGroupID [""Copper 2'0""];";
+					init="[this,""ExampleSide"",""ExampleUnit""] call tb3_fLoadout; group this setGroupID [""Copper 2'0""];";
 					description="Platoon HQ | Platoon Sergeant";
 				};
 				class Item3
@@ -153,7 +153,7 @@ class Mission
 					vehicle="I_medic_F";
 					player="PLAY CDG";
 					skill=0.60000002;
-					init="[this,""INDinf"",""CL""] call tb3_fLoadout; group this setGroupID [""Copper 2'0""];";
+					init="[this,""ExampleSide"",""ExampleUnit""] call tb3_fLoadout; group this setGroupID [""Copper 2'0""];";
 					description="Platoon HQ | Platoon CLS";
 				};
 			};

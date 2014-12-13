@@ -8,7 +8,6 @@ tb3_fEnumMixedArray				= compile (preprocessFileLineNumbers "tb3\f\array\fEnumMi
 
 // Loadout Functions
 tb3_fLoadout 				= compile (preprocessFileLineNumbers "tb3\f\loadout\fLoadout.sqf"); //runs sub functions for addition and removal of equipment
-tb3_fClearInventory 				= compile (preprocessFileLineNumbers "tb3\f\loadout\fClearInventory.sqf");
 tb3_fSelectPrimaryMuzzle	= compile (preprocessFileLineNumbers "tb3\f\loadout\fSelectPrimaryMuzzle.sqf");
 
 tb3_fSetItems				= compile (preprocessFileLineNumbers "tb3\f\loadout\fSetItems.sqf");
@@ -24,12 +23,9 @@ tb3_fSetWeapons				= compile (preprocessFileLineNumbers "tb3\f\loadout\fSetWeapo
 tb3_fSetMagazines				= compile (preprocessFileLineNumbers "tb3\f\loadout\fSetMagazines.sqf");
 tb3_fSetLanguages				= compile (preprocessFileLineNumbers "tb3\f\loadout\fSetLanguages.sqf");
 	//container specific gear
-	tb3_fSetRuckItems				= compile (preprocessFileLineNumbers "tb3\f\loadout\containers\fSetRuckItems.sqf");
-	tb3_fSetRuckMagazines				= compile (preprocessFileLineNumbers "tb3\f\loadout\containers\fSetRuckMagazines.sqf");
-	tb3_fSetVestItems				= compile (preprocessFileLineNumbers "tb3\f\loadout\containers\fSetVestItems.sqf");
-	tb3_fSetVestMagazines				= compile (preprocessFileLineNumbers "tb3\f\loadout\containers\fSetVestMagazines.sqf");
-	tb3_fSetUniformItems				= compile (preprocessFileLineNumbers "tb3\f\loadout\containers\fSetUniformItems.sqf");
-	tb3_fSetUniformMagazines				= compile (preprocessFileLineNumbers "tb3\f\loadout\containers\fSetUniformMagazines.sqf");	
+	tb3_fSetRuckContents		= compile (preprocessFileLineNumbers "tb3\f\loadout\containers\fSetRuckContents.sqf");
+	tb3_fSetVestContents		= compile (preprocessFileLineNumbers "tb3\f\loadout\containers\fSetVestContents.sqf");
+	tb3_fSetUniformContents		= compile (preprocessFileLineNumbers "tb3\f\loadout\containers\fSetUniformContents.sqf");
 	
 	
 tb3_fSetVehCargoMagazines			= compile (preprocessFileLineNumbers "tb3\f\loadout\vehicleCargo\fSetVehCargoMagazines.sqf");
