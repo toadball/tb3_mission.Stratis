@@ -1,0 +1,289 @@
+version=12;
+class Mission
+{
+	addOns[]=
+	{
+		"A3_Modules_F",
+		"A3_Characters_F_INDEP",
+		"a3_characters_f",
+		"A3_Soft_F_TruckHeavy",
+		"a3_map_stratis"
+	};
+	addOnsAuto[]=
+	{
+		"A3_Modules_F",
+		"A3_Characters_F_INDEP",
+		"a3_characters_f",
+		"A3_Soft_F_TruckHeavy",
+		"a3_map_stratis"
+	};
+	randomSeed=406628;
+	class Intel
+	{
+		briefingName="TB3 Template";
+		overviewText="2015 Revisions";
+		startWeather=0.84999996;
+		startWind=0.099999994;
+		startWaves=0.099999994;
+		forecastWeather=0.84999996;
+		forecastWind=0.099999994;
+		forecastWaves=0.099999994;
+		forecastLightnings=0.099999994;
+		rainForced=1;
+		lightningsForced=1;
+		wavesForced=1;
+		windForced=1;
+		year=2035;
+		month=7;
+		day=6;
+		hour=12;
+		minute=0;
+		startFogDecay=0.013;
+		forecastFogDecay=0.013;
+	};
+	class Groups
+	{
+		items=4;
+		class Item0
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={1741.1602,5.5,5800.4482};
+					id=0;
+					side="LOGIC";
+					vehicle="Logic";
+					leader=1;
+					skill=0.60000002;
+					text="specPen";
+				};
+			};
+		};
+		class Item1
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={1753.3472,5.5,5750.1553};
+					azimut=63.156033;
+					id=1;
+					side="LOGIC";
+					vehicle="Logic";
+					leader=1;
+					skill=0.60000002;
+					text="specLoc";
+				};
+			};
+		};
+		class Item2
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={1750.7104,5.5,5760.3037};
+					id=2;
+					side="LOGIC";
+					vehicle="Logic";
+					leader=1;
+					skill=0.60000002;
+					text="tb3";
+				};
+			};
+		};
+		class Item3
+		{
+			side="GUER";
+			class Vehicles
+			{
+				items=4;
+				class Item0
+				{
+					position[]={1784.3965,5.5,5761.8848};
+					azimut=99.020798;
+					id=3;
+					side="GUER";
+					vehicle="I_officer_F";
+					player="PLAY CDG";
+					leader=1;
+					rank="LIEUTENANT";
+					skill=0.60000002;
+					init="[this,""INDinf"",""PL""] call tb3_fLoadout; group this setGroupID [""Copper 2'0""];";
+					description="Platoon HQ | Platoon Commander";
+				};
+				class Item1
+				{
+					position[]={1783.0913,5.5,5762.127};
+					azimut=99.020798;
+					id=4;
+					side="GUER";
+					vehicle="I_soldier_F";
+					player="PLAY CDG";
+					skill=0.60000002;
+					init="[this,""INDinf"",""SI""] call tb3_fLoadout; group this setGroupID [""Copper 2'0""];";
+					description="Platoon HQ | Platoon Signaller";
+				};
+				class Item2
+				{
+					position[]={1782.5913,5.5,5759.54};
+					azimut=99.020798;
+					id=5;
+					side="GUER";
+					vehicle="I_Soldier_SL_F";
+					player="PLAY CDG";
+					rank="SERGEANT";
+					skill=0.60000002;
+					init="[this,""INDinf"",""PS""] call tb3_fLoadout; group this setGroupID [""Copper 2'0""];";
+					description="Platoon HQ | Platoon Sergeant";
+				};
+				class Item3
+				{
+					position[]={1781.1899,5.5,5759.8789};
+					azimut=99.020798;
+					id=6;
+					side="GUER";
+					vehicle="I_medic_F";
+					player="PLAY CDG";
+					skill=0.60000002;
+					init="[this,""INDinf"",""CL""] call tb3_fLoadout; group this setGroupID [""Copper 2'0""];";
+					description="Platoon HQ | Platoon CLS";
+				};
+			};
+		};
+	};
+	class Vehicles
+	{
+		items=1;
+		class Item0
+		{
+			position[]={1770.5757,5.5,5751.7783};
+			azimut=56.574501;
+			id=7;
+			side="EMPTY";
+			vehicle="I_Truck_02_covered_F";
+			skill=0.60000002;
+			init="[this,""ExampleSide"",""ExampleVehicle""] call tb3_fLoadout; ";
+			description="2 Section | Rifleman (E)";
+		};
+	};
+	class Markers
+	{
+		items=3;
+		class Item0
+		{
+			position[]={1742.9746,5.5,5800.7334};
+			name="respawn_west";
+			type="Empty";
+		};
+		class Item1
+		{
+			position[]={1739.709,5.5,5800.7334};
+			name="respawn_guer";
+			type="Empty";
+		};
+		class Item2
+		{
+			position[]={1741.1367,5.5,5799.5107};
+			name="respawn_east";
+			type="Empty";
+		};
+	};
+};
+class Intro
+{
+	addOns[]=
+	{
+		"a3_map_stratis"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_stratis"
+	};
+	randomSeed=9298607;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.30000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		month=7;
+		day=6;
+		hour=12;
+		minute=0;
+		startFogDecay=0.013;
+		forecastFogDecay=0.013;
+	};
+};
+class OutroWin
+{
+	addOns[]=
+	{
+		"a3_map_stratis"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_stratis"
+	};
+	randomSeed=3862367;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.30000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		month=7;
+		day=6;
+		hour=12;
+		minute=0;
+		startFogDecay=0.013;
+		forecastFogDecay=0.013;
+	};
+};
+class OutroLoose
+{
+	addOns[]=
+	{
+		"a3_map_stratis"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_stratis"
+	};
+	randomSeed=10731676;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.30000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		month=7;
+		day=6;
+		hour=12;
+		minute=0;
+		startFogDecay=0.013;
+		forecastFogDecay=0.013;
+	};
+};
