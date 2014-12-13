@@ -151,6 +151,42 @@
 				priKit[] = {"optic_Hamr"};
 				secKit[] = {};
 			};
+			class ExampleVehicle {
+				vehCargoWeapons[] = {{"launch_NLAW_F",2}};
+				vehCargoMagazines[] = {
+					{"30Rnd_556x45_Stanag",10},
+					{"30Rnd_556x45_Stanag_Tracer_Yellow",10},
+					{"200Rnd_65x39_cased_Box",4},
+					{"200Rnd_65x39_cased_Box_Tracer",4},
+					{"HandGrenade",6},
+					{"SmokeShell",6},
+					{"1Rnd_HE_Grenade_shell",8}
+				};
+				vehCargoItems[] = {
+					{"cse_personal_aid_kit",1},
+					{"cse_bandage_basic",8},						
+					{"cse_bandageElastic",8},
+					{"cse_packing_bandage",4},
+					{"cse_tourniquet",2},
+					{"cse_liquidSkin",2},	
+					{"cse_splint",2},						
+					{"cse_nasopharyngeal_tube",2},
+					{"cse_chestseal",2},
+					{"cse_saline_iv",4},
+					{"cse_morphine",4},
+					{"cse_epinephrine",4},
+					{"cse_atropine",4},
+					{"cse_quikclot",8},
+					{"I_UavTerminal",1},
+					{"ToolKit",1}
+				};
+				vehCargoRucks[] = {
+					{"B_Carryall_oli",2}
+				};
+			};		
+		
+		
+		
 		};
 	
 	};
