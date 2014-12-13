@@ -47,7 +47,7 @@ if (_unit isKindOf "Man") then {
 		};
 		if ((count _backpack) > 0) then {
 			if(_backpack select 0 != backpack _unit) then { 
-				[_unit,_backpack select 0] call tb3_fSetBackpack; 
+				[_unit,_backpack] call tb3_fSetBackpack; 
 			};
 		} else {
 			removeBackPack _unit;

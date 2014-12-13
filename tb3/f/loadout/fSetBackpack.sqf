@@ -10,7 +10,7 @@ if ( local _unit ) then
 		case 1 : {
 			removeBackpack _unit;
 	
-			_backpack = _backpackARR select 1;
+			_backpack = _backpackARR select 0;
 
 			_unit addBackpack _backpack;
 				
@@ -20,7 +20,7 @@ if ( local _unit ) then
 			if ((_backpackARR select 1) == 1) then {
 				removeBackpack _unit;
 		
-				_backpack = _backpackARR select 1;
+				_backpack = _backpackARR select 0;
 
 				_unit addBackpack _backpack;
 				clearAllItemsFromBackpack _unit;
@@ -29,11 +29,10 @@ if ( local _unit ) then
 			} else { 
 				removeBackpack _unit;
 		
-				_backpack = _backpackARR select 1;
+				_backpack = _backpackARR select 0;
 
 				_unit addBackpack _backpack;
-				clearAllItemsFromBackpack _unit;
-				
+
 				_handled = true;
 			};
 		};

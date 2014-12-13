@@ -110,32 +110,28 @@
 				babelSpokenLanguages[] = {{"altian"},"altian"};//0 = array of spoken languages inc native, 1 = native spoken language
 				weapons[] = {"tb_arifle_mk21","Binocular"};
 				magazines[] = {	}; //do not use if using specific allocation of magazines
-				backpack[] = {"B_Carryall_oli"};
-					backpackMagazines[] = {
+				backpack[] = {"B_Carryall_oli",0};
+					backpackContents[] = {
 						{"30Rnd_556x45_Stanag",2},
 						{"30Rnd_556x45_Stanag_Tracer_Yellow",1},
-						{"Chemlight_green",2}
-					};
-					backpackItems[] = {
+						{"Chemlight_green",2},
 						{"NVGoggles_INDEP",1},
 						{"acc_pointer_IR",1},
-						{"acc_flashlight",1}
+						{"acc_flashlight",1}						
 					};
 				headgear[] = {"tb_alfr_mich_AFPAT"};
 				uniform[] = {"tb_alfr_CombatUniform_AFPAT"};
-					uniformMagazines[] = {{"30Rnd_556x45_Stanag",1}};
-					uniformItems[] = {
+					uniformContents[] = {
+						{"30Rnd_556x45_Stanag",1},
 						{"H_Booniehat_indp",1}
 					};
 				goggles[] = {"G_Lowprofile"};
 				vest[] = {"tb_alfr_platecarrier_01"};
-					vestMagazines[] = {
+					vestContents[] = {
 						{"30Rnd_556x45_Stanag",4},
 						{"30Rnd_556x45_Stanag_Tracer_Yellow",2},
 						{"HandGrenade",2},
-						{"SmokeShell",1}
-					};
-					vestItems[] = {
+						{"SmokeShell",1},
 						{"ACRE_PRC148",1},
 						{"ACRE_PRC343",1},
 						{"cse_tourniquet",1},
@@ -143,7 +139,7 @@
 						{"cse_chestseal",1},
 						{"cse_bandage_basic",2},
 						{"cse_bandageElastic",1},
-						{"cse_packing_bandage",1}
+						{"cse_packing_bandage",1}						
 					};
 				assignedItems[] = {"ItemMap","ItemCompass",	"ItemWatch","ItemGPS"};
 				items[] = {	}; //do not use if using specific allocation of items
