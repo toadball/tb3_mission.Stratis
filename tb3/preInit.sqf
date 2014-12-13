@@ -121,7 +121,7 @@ if ( getNumber(TB3_Settings >> "General" >>  "aiHearTalk") == 1 ) then
 // ACRE2 settings //
 ////////////////////
 
-if ( TB3_ACRE && {(getNumber(TB3_Settings >> "ACRE2" >>  "babelEnabled") == 1)} ) then 
+if ( (!isDedicated) && {TB3_ACRE && (getNumber(TB3_Settings >> "ACRE2" >>  "babelEnabled") == 1)} ) then 
 {
 	if (getNumber(TB3_Settings >> "ACRE2" >>  "babelEnabled") == 1) then {TB3_babelEnabled = true} else {TB3_babelEnabled = false};
 	TB3_babelLanguages = getArray(TB3_Settings >> "ACRE2" >>  "babelLanguages");
