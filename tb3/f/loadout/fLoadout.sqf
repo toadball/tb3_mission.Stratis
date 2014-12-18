@@ -8,6 +8,7 @@ _gear  = _this select 2;
 
 //get the defined gear.
 TB3_GearPath = (missionConfigFile >> "TB3_Gear");
+_languages			= getArray (TB3_GearPath >> _cfg >> _gear >> "babelSpokenLanguages");
 _weapons 			= getArray (TB3_GearPath >> _cfg >> _gear >> "weapons");
 _magazines 			= getArray (TB3_GearPath >> _cfg >> _gear >> "magazines");
 

@@ -13,7 +13,7 @@ TB3_INIT = false;
 diag_log text ""; 
 diag_log text format["|=============================  %1 @ %2 =============================|", missionName, worldName]; 
 diag_log text "";
-diag_log text " tb3 template 0.50";
+diag_log text " tb3 template 0.80";
 diag_log text format[" init method: %1", _this select 0];
 diag_log text "";
 diag_log text "|======================================================================================|"; 
@@ -125,8 +125,6 @@ if ( (!isDedicated) && {TB3_ACRE && (getNumber(TB3_Settings >> "ACRE2" >>  "babe
 {
 	if (getNumber(TB3_Settings >> "ACRE2" >>  "babelEnabled") == 1) then {TB3_babelEnabled = true} else {TB3_babelEnabled = false};
 	TB3_babelLanguages = getArray(TB3_Settings >> "ACRE2" >>  "babelLanguages");
-	TB3_babelFactionLanguages = getArray(TB3_Settings >> "ACRE2" >>  "babelFactionLanguages");
-	
 	if (count TB3_babelLanguages > 0) then	{{ _x call acre_api_fnc_babelAddLanguageType; } forEach TB3_babelLanguages;};	
 };
 
