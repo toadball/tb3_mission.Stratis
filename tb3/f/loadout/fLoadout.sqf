@@ -81,6 +81,8 @@ if (_unit isKindOf "Man") then {
 	if ((count _vehCargoWeapons) > 0) then { [_unit,_vehCargoWeapons] call tb3_fSetVehCargoWeapons; };
 	if ((count _vehCargoMagazines) > 0) then { [_unit,_vehCargoMagazines] call tb3_fSetVehCargoMagazines; };
 	if ((count _vehCargoRucks) > 0) then { [_unit,_vehCargoRucks] call tb3_fSetVehCargoBackpacks; };
-		
+	
+	if ((count _languages) > 0) then { [_unit,_languages] call tb3_fSetLanguages; };
+	
 	_unit setVariable ["tb3_loadout", _this, true];
 	_handled = true;

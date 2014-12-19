@@ -180,11 +180,13 @@
 					{"B_Carryall_oli",2}
 				};
 			};		
-		
-		
-		
+			class ExampleUnit2 : ExampleUnit {
+				babelSpokenLanguages[] = {{"english","altian"},"altian"};//0 = array of spoken languages inc native, 1 = native spoken language	
+			};
+			class ExampleUnit3 : ExampleUnit {
+				babelSpokenLanguages[] = {{"english","altian"}};//0 = array of spoken languages inc native, 1 = native spoken language	
+			};
 		};
-	
 	};
 
 
