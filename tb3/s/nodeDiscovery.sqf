@@ -20,7 +20,7 @@ switch ( isDedicated ) do
 		isAdmin 		= if ( isMultiplayer ) then { (serverCommandAvailable "#kick chapple") } else { true };
 		isAvailableAdmin= if ( isMultiplayer ) then { 
 			if (isClass (configFile >> "CfgPatches" >> "uo_a3_debugConsole")) then {
-				tb3_UOadmins = call compile ("[" + (preprocessFile "\uo_a3_debugConsole\admins.sqf") + "]");
+				tb3_UOadmins = call compile ("[" + (preprocessFile "\x\uo\addons\uo_a3_debugconsole\admins.sqf") + "]");
 				(parseNumber(getPlayerUID player) in tb3_UOadmins);
 			} else {(parseNumber(getPlayerUID player) in (getArray (TB3_Settings >> "Admin" >> "adminUIDs")))};
 		}  else { false };
