@@ -24,6 +24,8 @@ _vest				= getArray (TB3_GearPath >> _cfg >> _gear >> "vest");
 _vestContents 		= getArray (TB3_GearPath >> _cfg >> _gear >> "vestContents");
 _goggles			= getArray (TB3_GearPath >> _cfg >> _gear >> "goggles");
 _items				= getArray (TB3_GearPath >> _cfg >> _gear >> "items");
+_mre				= getNumber (TB3_GearPath >> _cfg >> _gear >> "cookingwithgodhand");
+
 _assignedItems		= getArray (TB3_GearPath >> _cfg >> _gear >> "assignedItems");
 
 _vehCargoWeapons 	= getArray (TB3_GearPath >> _cfg >> _gear >> "vehCargoWeapons");
@@ -69,9 +71,10 @@ if (_unit isKindOf "Man") then {
 	if ((count _headgear) > 0) then { [_unit,_headgear select 0] call tb3_fSetHeadgear;	};		
 
 	if ((count _goggles) > 0) then { [_unit,_goggles select 0] call tb3_fSetGoggles; };		
+	if ((count _items) > 0) then { [_unit,_items] call tb3_fSetItems; };	
 	if ((count _magazines) > 0) then {	[_unit,_magazines] call tb3_fSetMagazines; };
 	if ((count _weapons) > 0) then { [_unit,_weapons,_priKit,_secKit] call tb3_fSetWeapons; };	
-	if ((count _items) > 0) then { [_unit,_items] call tb3_fSetItems;	};	
+	if (_mre > 0) then { [_unit] call tb3_fSetMRE; };	
 
 	if ((count _backpackContents) > 0) then { [_unit,_backpackContents] call tb3_fsetRuckContents; };
 	if ((count _uniformContents) > 0) then { [_unit,_uniformContents] call tb3_fsetUniformContents; };
