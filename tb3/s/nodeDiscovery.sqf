@@ -41,7 +41,7 @@ diag_log text format["isServer = %1", isServer];
 diag_log text format["isClient = %1", isClient];
 diag_log text format["isMultiplayer = %1", isMultiplayer];
 diag_log text format["isAdmin = %1", isAdmin];
-//diag_log text format["isAvailableAdmin = %1", isAvailableAdmin];
+diag_log text format["isAvailableAdmin = %1", isAvailableAdmin];
 diag_log text format["isJIP = %1", isJIP];
 diag_log text "";
 
