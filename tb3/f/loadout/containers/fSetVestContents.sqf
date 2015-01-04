@@ -12,7 +12,11 @@ if ( !isNull(vestContainer _unit) ) then // dealing with a BIS backpack
 		
 		{
 			for "_i" from 1 to (_x select 1) do {
-				_unit addItemToVest (_x select 0);
+				if (_unit canAddItemToVest (_x select 0)) then {
+					_unit addItemToVest (_x select 0);
+				} else {
+					diag_log Format ["TB3 Error: Not Enough space to add %1 to %2 (Vest)",(_x select 0),_unit];
+				};
 			};
 		} forEach _vestContents;
 		_handled = true;
