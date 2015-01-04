@@ -12,6 +12,8 @@ tb3_fSelectPrimaryMuzzle	= compile (preprocessFileLineNumbers "tb3\f\loadout\fSe
 
 tb3_fSetItems				= compile (preprocessFileLineNumbers "tb3\f\loadout\fSetItems.sqf");
 tb3_fSetLinkedItems				= compile (preprocessFileLineNumbers "tb3\f\loadout\fSetLinkedItems.sqf");
+tb3_fsetMRE					= compile (preprocessFileLineNumbers "tb3\f\loadout\fSetMRE.sqf");
+
 
 tb3_fSetUniform				= compile (preprocessFileLineNumbers "tb3\f\loadout\fSetUniform.sqf");
 tb3_fSetVest				= compile (preprocessFileLineNumbers "tb3\f\loadout\fSetVest.sqf");
