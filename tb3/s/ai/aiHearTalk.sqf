@@ -13,14 +13,14 @@
 		private ["_nearAISingle"];
 
 		_nearAISingle = _this select 0;
-
-		([weapons _nearAISingle, "ACRE_PRC117F"] call acre_api_fnc_hasKindOfRadio) || ([weapons _nearAISingle, "ACRE_PRC119"] call acre_api_fnc_hasKindOfRadio) || ([weapons _nearAISingle, "ACRE_PRC148"] call acre_api_fnc_hasKindOfRadio)
+		[_nearAISingle] call acre_api_fnc_hasRadio;
+		//([weapons _nearAISingle, "ACRE_PRC117F"] call acre_api_fnc_hasKindOfRadio) || ([weapons _nearAISingle, "ACRE_PRC119"] call acre_api_fnc_hasKindOfRadio) || ([weapons _nearAISingle, "ACRE_PRC148"] call acre_api_fnc_hasKindOfRadio)
 	};
 
-	tb3_revealToAI = {(_this select 0) reveal (_this select 1)};
+	b_revealToAI = {(_this select 0) reveal (_this select 1)};
 
 	[{
-		if ((player getVariable "acre_sys_core_isSpeaking") == 1) then
+		if ([player] call acre_api_fnc_isSpeaking) then
 		{
 			_talkTime = _talkTime + 0.25;
 
