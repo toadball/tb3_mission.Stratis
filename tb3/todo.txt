@@ -1,3 +1,2 @@
--ditch Interaction
 -update jip teleport system
--
+-new freq check script

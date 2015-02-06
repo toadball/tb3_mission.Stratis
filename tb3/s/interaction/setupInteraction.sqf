@@ -1,24 +1,23 @@
 waitUntil { TB3_INIT };
-#include "\a3\editor_f\Data\Scripts\dikCodes.h"
-
-//sleep 5;  //wait for start
-
-//Self interaction
-//["player", [DIK_APPS], -10, ["tb3\s\interaction\selfInteraction.sqf", "main"]] call CBA_ui_fnc_add;
-
-//Interaction with others
-//["CAManBase", [DIK_LWIN], 15, ["tb3\s\interaction\unitInteraction.sqf", "main"]] call CBA_ui_fnc_add;
-
+waitUntil {!isNil "CSE_ICON_PATH"};
+sleep 10;
 
 	//Primary Radial Stuff
 	//[displayName STRING, condition CODE, icon STRING, onPressed CODE, toolTip STRING]
 	//Custom Menu
 	_entries = [
 		[
-			"Admin: END",
+			"AdminTools",
+			{((isAvailableAdmin) || (isAdmin))},
+			(CSE_ICON_PATH + "icon_backpack_radio.paa"),
+			{[] call tb3_radialSub_adminTools},
+			"Admin: Tools"
+		],	
+		[
+			"Admin: ENDEX",
 			{isAdmin},
 			(CSE_ICON_PATH + "icon_backpack_radio.paa"),
-			{["Test"] call lynx_fnc_radialSub_adminEnd},
+			{["Test"] call tb3_radialSub_adminEndex},
 			"END MISSION"
 		],
 		[
@@ -34,15 +33,8 @@ waitUntil { TB3_INIT };
 	//Equipment Menu
 	_entries = [
 		[
-			"Helmet",
-			{(vehicleVarName player == "PLT2_MM" || vehicleVarName player == "PLT2_PL") && (headgear player == "rhs_fieldcap_helm" || headgear player == "rhs_6b27m")},
-			(CSE_ICON_PATH + "icon_movement.paa"),
-			{[player] execVM 'tb3\f\lynx\scripts\utilSwapcap.sqf'},
-			"Swap Helmet/Field Cap"
-		],
-		[
 			"Radio",
-			{(lynx_objFriendly && !lynx_objEnemy)},
+			{(IND_obj1Flag1 && !IND_obj1Flag1)},
 			(CSE_ICON_PATH + "icon_backpack_radio.paa"),
 			{[player] execVM 'tb3\s\radio\radioMessage_1.sqf'},
 			"Radio: Objective Secure"
@@ -52,10 +44,41 @@ waitUntil { TB3_INIT };
 
 	//[TITLE, ICONPATCH, CODE, true, TOOLTIP]
 	//Admin End Confirmation
-	lynx_fnc_radialSub_adminEnd = {
+	tb3_radialSub_adminEndex = {
 		_subMenus = [
-			["CONFIRM", (CSE_ICON_PATH + "icon_interact.paa"), {closeDialog 0; [] execVM 'tb3\s\interaction\endAction.sqf'}, true, "Confirm Mission End"],
-			["CANCEL", (CSE_ICON_PATH + "icon_return.paa"), {closeDialog 0}, true, "Cancel Mission End"]
+			[
+				"CONFIRM",
+				(CSE_ICON_PATH + "icon_interact.paa"),
+				{closeDialog 0; [] execVM 'tb3\s\interaction\endAction.sqf'},
+				true,
+				"Confirm Mission End"
+			],
+			[
+				"CANCEL",
+				(CSE_ICON_PATH + "icon_return.paa"),
+				{closeDialog 0},
+				true,
+				"Cancel Mission End"]
+		];
+		["ActionMenu", _subMenus, player, CSE_SELECTED_RADIAL_OPTION_N_GUI, true] call cse_fnc_openRadialSecondRing_GUI;
+	};
+	//Admin tools
+	tb3_radialSub_adminTools = {
+		_subMenus = [
+			[
+				"Captive On/Off",
+				(CSE_ICON_PATH + "icon_interact.paa"),
+				{closeDialog 0; [player] call tb3_fSetCaptive},
+				{(isAdmin)},
+				"AdminSetCaptive"
+			],
+			[
+				"Map Teleport",
+				(CSE_ICON_PATH + "icon_interact.paa"), 
+				{closeDialog 0; [] call tb3_fMapTeleport},
+				{(isAdmin)}, 
+				"AdminMapTeleport"
+			]
 		];
 		["ActionMenu", _subMenus, player, CSE_SELECTED_RADIAL_OPTION_N_GUI, true] call cse_fnc_openRadialSecondRing_GUI;
 	};

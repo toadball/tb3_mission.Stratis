@@ -111,12 +111,6 @@ if ( getNumber(TB3_Settings >> "General" >>  "spectator") > 0 ) then
 	[] spawn {  waitUntil {!isNull player}; [] execVM "tb3\s\spec\playerDeath.sqf";  diag_log "TB3 Init: spectator check"; };
 };
 
-// Start AI hearing
-if ( getNumber(TB3_Settings >> "General" >>  "aiHearTalk") == 1 ) then 
-{
-	[] execVM "tb3\s\ai\aiHearTalk.sqf";  diag_log "TB3 Init: aiHearTalk check";
-};
-
 ////////////////////
 // ACRE2 settings //
 ////////////////////
