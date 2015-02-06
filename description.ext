@@ -23,7 +23,7 @@
 	};
 	class Extended_PreInit_EventHandlers {
 		class tb3 {
-			init = "call ('tb3\preInit.sqf' call SLX_XEH_COMPILE)";
+			init = "call compile preprocessFileLineNumbers 'tb3\preInit.sqf'";
 		};
 	};
 	class CfgSettings {
@@ -41,13 +41,12 @@
 	};
 	class TB3_Settings {
 		class General {
-			version = 8;
+			version = 9;
 			processParams = 1;
 			enableSaving = 0;
 			missionMonitor = 1;
 			dynamicViewDistance = 1;
 			spectator = 1;  //0 off, 1 default on: no respawn w/ spectator, 2 spectator activated by variable switch
-			aiHearTalk = 1;
 			enableNameTags = 1; // nametags on(1) or off (0)
 			enableFlexiMenu = 1; // CBA Fleximenu options on(1) or off (0)
 			jipTeleport = 1; // Because JIPs are fucking lazy shites.
@@ -144,8 +143,9 @@
 				assignedItems[] = {"ItemMap","ItemCompass",	"ItemWatch","ItemGPS"};
 				items[] = {	}; //do not use if using specific allocation of items
 				
-				priKit[] = {"optic_Hamr"};
-				secKit[] = {};
+				priKit[] = {"optic_Hamr"}; //primary weapon attachment/s
+				secKit[] = {}; //launcher weapon attachment/s
+				pisKit[] = {}; //pistol attachment/s
 			};
 			class ExampleVehicle {
 				vehCargoWeapons[] = {{"launch_NLAW_F",2}};

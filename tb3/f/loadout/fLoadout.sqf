@@ -14,6 +14,7 @@ _magazines 			= getArray (TB3_GearPath >> _cfg >> _gear >> "magazines");
 
 _priKit				= getArray (TB3_GearPath >> _cfg >> _gear >> "priKit");
 _secKit 			= getArray (TB3_GearPath >> _cfg >> _gear >> "secKit");	
+_pisKit 			= getArray (TB3_GearPath >> _cfg >> _gear >> "pisKit");	
 
 _backpack			= getArray (TB3_GearPath >> _cfg >> _gear >> "backpack");
 _backpackContents 	= getArray (TB3_GearPath >> _cfg >> _gear >> "backpackContents");

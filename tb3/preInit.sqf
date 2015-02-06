@@ -13,7 +13,7 @@ TB3_INIT = false;
 diag_log text ""; 
 diag_log text format["|=============================  %1 @ %2 =============================|", missionName, worldName]; 
 diag_log text "";
-diag_log text " tb3 template 0.80";
+diag_log text " tb3 template 0.9";
 diag_log text format[" init method: %1", _this select 0];
 diag_log text "";
 diag_log text "|======================================================================================|"; 
@@ -28,7 +28,7 @@ TB3_missionFilePathLength = (count(toArray(__FILE__)) - 18);
 TB3_adminendex = false;
 
 
-TB3_requireVersion = 8; // the required version of the description.ext
+TB3_requireVersion = 9; // the required version of the description.ext
 WCasRate = 0; WCasNum = 0; WStartNum = 0; WCasArr = [];
 ECasRate = 0; ECasNum = 0; EStartNum = 0; ECasArr = [];
 RCasRate = 0; RCasNum = 0; RStartNum = 0; RCasArr = [];

@@ -1,10 +1,10 @@
-private ["_unit", "_primaryStuff", "_secondaryStuff", "_otherStuff", "_handled"];
+private ["_unit", "_weapons", "_priKit", "_secKit", "_pisKit", "_handled"];
 
 _unit = _this select 0;
 _weapons = _this select 1;
 _priKit = _this select 2;
 _secKit = _this select 3;
-
+_pisKit = _this select 4;
 
 if ( local _unit ) then 
 {
@@ -23,12 +23,18 @@ if ( local _unit ) then
 		} forEach _priKit;
 	};	
 	
-	//Secondary Weapon attachments
+	//Secondary Weapon attachments: Launchers
 	if ((count _secKit) > 0) then {
 		{
-			_unit addHandgunItem _x;
+			_unit addSecondaryWeaponItem _x;
 		} ForEach _secKit;
 	};
+	//Pistol weapon attachments
+	if ((count _pisKit) > 0) then {
+		{
+			_unit addHandgunItem _x;
+		} ForEach _pisKit;
+	};	
 	
 	_handled = true;
 } else

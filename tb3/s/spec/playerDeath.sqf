@@ -36,7 +36,10 @@ while {true} do {
 			_acreSpec = [true] call acre_api_fnc_setSpectator;
 			//ACRE_SPECTATOR_VOLUME = 1;
 			//ACRE_MUTE_SPECTATORS = false;
-			[] execVM "tb3\s\spec\spectator.sqf"; 
+			_prePos		= [(getPosATL specloc select 0),(getPosATL specloc select 1),5];
+			_preDir		= 0;
+
+			[_prePos,_preDir] execVM "tb3\s\spec\spectator.sqf";
 			_specActive = true;
 		};
 		
