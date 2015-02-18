@@ -1,2 +1,4 @@
--update jip teleport system
 -new freq check script
+-Weather sync
+-Time sync
+-babel fix for spec

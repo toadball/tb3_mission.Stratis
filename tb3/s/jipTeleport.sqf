@@ -23,7 +23,7 @@ private ["_unit","_leader","_LX","_LY","_LZ"];
 	{
 		if ((vehicle _leader) emptyPositions "cargo" == 0) then
 		{
-			hint "No room in Section Leader's vehicle."
+			hint "No room in group leader's vehicle."
 		}
 		else
 		{
