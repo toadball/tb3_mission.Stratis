@@ -1,5 +1,5 @@
 //loadout items
-private ["_unit","_cfg","_gear","_items","_assignedItems","_weapons","_magazines","_backpack","_headgear","_uniform","_vest","_goggles","_priKit","_secKit","_backpackContents","_vestContents","_uniformContents","_vehCargoWeapons","_vehCargoMagazines","_vehCargoItems","_vehCargoRucks"];
+private ["_unit","_cfg","_gear","_items","_assignedItems","_weapons","_magazines","_backpack","_backpackRandom","_backpackSel","_headgear","_headgearRandom","_headgearSel","_uniform","_uniformRandom","_uniformSel","_vest","_vestRandom","_vestSel","_goggles","_gogglesRandom","_gogglesSel","_priKit","_secKit","_pisKit","_backpackContents","_vestContents","_uniformContents","_aceEarPlugs","_aceMedic","_vehCargoWeapons","_vehCargoMagazines","_vehCargoItems","_vehCargoRucks"];
 
 //core info
 _unit = _this select 0;
@@ -8,7 +8,6 @@ _gear  = _this select 2;
 
 //get the defined gear.
 TB3_GearPath = (missionConfigFile >> "TB3_Gear");
-_languages			= getArray (TB3_GearPath >> _cfg >> _gear >> "babelSpokenLanguages");
 _weapons 			= getArray (TB3_GearPath >> _cfg >> _gear >> "weapons");
 _magazines 			= getArray (TB3_GearPath >> _cfg >> _gear >> "magazines");
 
@@ -17,17 +16,23 @@ _secKit 			= getArray (TB3_GearPath >> _cfg >> _gear >> "secKit");
 _pisKit 			= getArray (TB3_GearPath >> _cfg >> _gear >> "pisKit");	
 
 _backpack			= getArray (TB3_GearPath >> _cfg >> _gear >> "backpack");
+_backpackRandom 	= getNumber (TB3_GearPath >> _cfg >> _gear >> "backpackRandom");
 _backpackContents 	= getArray (TB3_GearPath >> _cfg >> _gear >> "backpackContents");
 _headgear			= getArray (TB3_GearPath >> _cfg >> _gear >> "headgear");
+_headgearRandom 	= getNumber (TB3_GearPath >> _cfg >> _gear >> "headgearRandom");
 _uniform			= getArray (TB3_GearPath >> _cfg >> _gear >> "uniform");
+_uniformRandom 		= getNumber (TB3_GearPath >> _cfg >> _gear >> "uniformRandom");
 _uniformContents 	= getArray (TB3_GearPath >> _cfg >> _gear >> "uniformContents");
 _vest				= getArray (TB3_GearPath >> _cfg >> _gear >> "vest");
+_vestRandom 		= getNumber (TB3_GearPath >> _cfg >> _gear >> "vestRandom");
 _vestContents 		= getArray (TB3_GearPath >> _cfg >> _gear >> "vestContents");
 _goggles			= getArray (TB3_GearPath >> _cfg >> _gear >> "goggles");
+_gogglesRandom		= getNumber (TB3_GearPath >> _cfg >> _gear >> "gogglesRandom");
 _items				= getArray (TB3_GearPath >> _cfg >> _gear >> "items");
-_mre				= getNumber (TB3_GearPath >> _cfg >> _gear >> "cookingwithgodhand");
-
 _assignedItems		= getArray (TB3_GearPath >> _cfg >> _gear >> "assignedItems");
+
+_aceEarPlugs		= getNumber (TB3_GearPath >> _cfg >> _gear >> "ace_earplugs");
+_aceMedic			= getNumber (TB3_GearPath >> _cfg >> _gear >> "ace_medic");
 
 _vehCargoWeapons 	= getArray (TB3_GearPath >> _cfg >> _gear >> "vehCargoWeapons");
 _vehCargoMagazines 	= getArray (TB3_GearPath >> _cfg >> _gear >> "vehCargoMagazines");
@@ -41,24 +46,44 @@ if (_unit isKindOf "Man") then {
 		removeAllAssignedItems _unit; 
 		removeAllItemsWithMagazines _unit;
 		{_unit removeWeapon _x;} forEach weapons _unit;
-
 		if ((count _uniform) > 0) then {	
-			if(_uniform select 0 != uniform _unit) then {
-				[_unit,_uniform select 0] call tb3_fSetUniform;
+			if (_uniformRandom == 1) then {
+				_uniformSel = _uniform call BIS_fnc_selectRandom;
+				if(_uniformSel != uniform _unit) then {
+					[_unit,_uniformSel] call tb3_fSetUniform;
+				};					
+			} else {
+				if(_uniform select 0 != uniform _unit) then {
+					[_unit,_uniform select 0] call tb3_fSetUniform;
+				};
 			};
 		} else {
 			removeUniform _unit;
-		};
-		if ((count _backpack) > 0) then {
-			if(_backpack select 0 != backpack _unit) then { 
-				[_unit,_backpack] call tb3_fSetBackpack; 
+		};		
+		if ((count _backpack) > 0) then {	
+			if (_backpackRandom == 1) then {
+				_backpackSel = _backpack call BIS_fnc_selectRandom;
+				if(_backpackSel != backpack _unit) then {
+					[_unit,[_backpackSel]] call tb3_fSetbackpack;
+				};					
+			} else {
+				if(_backpack select 0 != backpack _unit) then {
+					[_unit,[_backpack select 0]] call tb3_fSetbackpack;
+				};
 			};
 		} else {
-			removeBackPack _unit;
+			removeBackpack _unit;
 		};
-		if ((count _vest) > 0) then {
-			if(_vest select 0 != vest _unit) then { 
-				[_unit,_vest select 0] call tb3_fSetVest; 
+		if ((count _vest) > 0) then {	
+			if (_vestRandom == 1) then {
+				_vestSel = _vest call BIS_fnc_selectRandom;
+				if(_vestSel != vest _unit) then {
+					[_unit,_vestSel] call tb3_fSetvest;
+				};					
+			} else {
+				if(_vest select 0 != vest _unit) then {
+					[_unit,_vest select 0] call tb3_fSetvest;
+				};
 			};
 		} else {
 			removeVest _unit;
@@ -69,14 +94,26 @@ if (_unit isKindOf "Man") then {
 };
 
 	if ((count _assignedItems) > 0) then { [_unit,_assignedItems] call tb3_fSetLinkedItems; };
-	if ((count _headgear) > 0) then { [_unit,_headgear select 0] call tb3_fSetHeadgear;	};		
-
-	if ((count _goggles) > 0) then { [_unit,_goggles select 0] call tb3_fSetGoggles; };		
+	if ((count _headgear) > 0) then { 
+		if (_headgearRandom == 1) then {
+			_headgearSel = _headgear call BIS_fnc_selectRandom;
+			[_unit,_headgearSel] call tb3_fSetHeadgear;
+		} else {  [_unit,_headgear select 0] call tb3_fSetHeadgear; };
+	};		
+	if ((count _goggles) > 0) then {
+		if (_gogglesRandom == 1) then {
+			_gogglesSel = _goggles call BIS_fnc_selectRandom;
+			[_unit,_gogglesSel] call tb3_fSetGoggles;	
+		} else { [_unit,_goggles select 0] call tb3_fSetGoggles; };	
+	};
+	
 	if ((count _items) > 0) then { [_unit,_items] call tb3_fSetItems; };	
 	if ((count _magazines) > 0) then {	[_unit,_magazines] call tb3_fSetMagazines; };
-	if ((count _weapons) > 0) then { [_unit,_weapons,_priKit,_secKit] call tb3_fSetWeapons; };	
-	if (_mre > 0) then { [_unit] call tb3_fSetMRE; };	
-
+	if ((count _weapons) > 0) then { [_unit,_weapons,_priKit,_secKit,_pisKit] call tb3_fSetWeapons; };	
+	
+	if (_aceEarPlugs == 1) then { _unit setVariable ["ACE_hasEarPlugsIn", true, true]; };
+	if (_aceMedic == 1) then { _unit setVariable ["ace_medical_medicClass", true, true]; };
+	
 	if ((count _backpackContents) > 0) then { [_unit,_backpackContents] call tb3_fsetRuckContents; };
 	if ((count _uniformContents) > 0) then { [_unit,_uniformContents] call tb3_fsetUniformContents; };
 	if ((count _vestContents) > 0) then { [_unit,_vestContents] call tb3_fsetVestContents; };
@@ -86,7 +123,8 @@ if (_unit isKindOf "Man") then {
 	if ((count _vehCargoMagazines) > 0) then { [_unit,_vehCargoMagazines] call tb3_fSetVehCargoMagazines; };
 	if ((count _vehCargoRucks) > 0) then { [_unit,_vehCargoRucks] call tb3_fSetVehCargoBackpacks; };
 	
-	if ((count _languages) > 0) then { [_unit,_languages] call tb3_fSetLanguages; };
-	
+	if (TB3_ACRE && {(getNumber(TB3_Settings >> "ACRE2" >>  "babelEnabled") == 1)}) then {
+		if ((count _languages) > 0) then { [_unit,_languages] call tb3_fSetLanguages; };
+	};
 	_unit setVariable ["tb3_loadout", _this, true];
 	_handled = true;

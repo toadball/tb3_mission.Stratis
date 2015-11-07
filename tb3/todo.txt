@@ -1,4 +1,8 @@
--new freq check script
--Weather sync
--Time sync
--babel fix for spec
+TB3 TO DO
+Move Spec stuff to respawn template
+	-Casualty monitor stuff as individual template?
+Update casualty monitor:
+	-No more infinite loops
+	-Loop only while a mission ending has not become true
+Improve dynamic view distance: change to getIn/GetOut event handler.
+Tidy up preInit

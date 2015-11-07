@@ -46,7 +46,7 @@ call compile (preprocessFileLineNumbers "preinit.sqf");
 
 
 /////////////////////////////////////////////////////////
-// Start going through the settings and start the chosen scripts //
+// Start going through the settings and start the chosen scripts
 /////////////////////////////////////////////////////////
 
 
@@ -71,7 +71,7 @@ if ( (getNumber(TB3_Settings >> "General" >> "enableSaving") == 0) && !isDedicat
 	enableSaving [false, false]; diag_log "TB3 Init: enableSaving check";
 };
 
-// Enable mission monitor?
+// Enable mission monitor? Monitors casualty numbers and rates (percentage)
 if ( (getNumber(TB3_Settings >> "General" >> "missionMonitor") == 1) && isServer ) then {
 	[] execVM "tb3\s\monitor.sqf"; diag_log "TB3 Init: missionMonitor check";
 };
@@ -87,17 +87,6 @@ if ( getNumber(TB3_Settings >> "General" >>  "dynamicViewDistance") == 1 ) then
 	[] execVM "tb3\s\dynamicViewDistance.sqf"; diag_log "TB3 Init: dynamicViewDistance check";
 };
 
-// Start name tag script (by TinfoilHate, modified by toadball)
-if ( getNumber(TB3_Settings >> "General" >> "enableNameTags") == 1 ) then 
-{
-	if(!(isClass(configFile >> "CfgPatches" >> "uo_a3_nametags"))) then {
-		tb3_nameTags = true;
-		[] execVM "tb3\s\nametags.sqf";
-	} else {
-		uo_a3_nameHUD_active = true;
-	}; diag_log "TB3 Init: enableNameTags check";
-};
-
 //Setup fleximenu stuff
 if ( getNumber(TB3_Settings >> "General" >> "enableFlexiMenu") == 1 ) then 
 {
@@ -111,30 +100,13 @@ if ( getNumber(TB3_Settings >> "General" >>  "spectator") > 0 ) then
 	[] spawn {  waitUntil {!isNull player}; [] execVM "tb3\s\spec\playerDeath.sqf";  diag_log "TB3 Init: spectator check"; };
 };
 
-////////////////////
-// ACRE2 settings //
-////////////////////
-
+// ACRE2 settings
 if ( (!isDedicated) && {TB3_ACRE && (getNumber(TB3_Settings >> "ACRE2" >>  "babelEnabled") == 1)} ) then 
 {
 	if (getNumber(TB3_Settings >> "ACRE2" >>  "babelEnabled") == 1) then {TB3_babelEnabled = true} else {TB3_babelEnabled = false};
 	TB3_babelLanguages = getArray(TB3_Settings >> "ACRE2" >>  "babelLanguages");
 	if (count TB3_babelLanguages > 0) then	{{ _x call acre_api_fnc_babelAddLanguageType; } forEach TB3_babelLanguages;};	
 };
-
-
-///////////////////
-// ACE settings //
-//////////////////
-/*
-ace_sys_tracking_markers_enabled = if ( getNumber(MK4_Settings >> "ACE" >> "tracking") == 1 ) then { true } else { false };
-ace_sys_tracking_enabled = if ( getNumber(MK4_Settings >> "ACE" >> "tracking") == 1 ) then { true } else { false };
-ace_sys_spectator_playable_only = if ( getNumber(MK4_Settings >> "ACE" >> "spectatePlayable") == 1 ) then { true } else { false };
-ace_sys_spectator_no_butterfly_mode = if ( getNumber(MK4_Settings >> "ACE" >> "spectateNoButterfly") == 1 ) then { true } else { false };
-ACE_NoStaminaEffects = if ( getNumber(MK4_Settings >> "ACE" >> "noStaminaEffects") == 1 ) then { true } else { false };
-ACE_NO_RECOGNIZE = if ( getNumber(MK4_Settings >> "ACE" >> "noRecognize") == 1 ) then { true } else { false };
-*/
-
 
 
 // Select primary muzzle and put the unit in a safe stance and some other stuff

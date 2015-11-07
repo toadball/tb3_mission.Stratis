@@ -1,3 +1,3 @@
 hint "\nClick on your destination.\n\n\nThe map will close automagically.\n\n";
-onMapSingleClick "openMap [false, false]; (vehicle player) setPosATL [_pos select 0, _pos select 1, (getPosATL (vehicle player)) select 2]; true; hintSilent ''; onMapSingleClick ''; ";
+onMapSingleClick "openMap [false, false]; (vehicle player) setPosATL [_pos select 0, _pos select 1, (getPosATL (vehicle player)) select 2]; diag_log Format ['%1 teleported to %2 via TB3 Admin Tools',player,_pos]; true; hintSilent  Format ['%1 teleported to %2 via TB3 Admin Tools',player,_pos]; onMapSingleClick ''; ";
 openMap [true,false];

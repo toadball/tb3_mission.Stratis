@@ -36,25 +36,17 @@
 		};
 	};
 	
-	class RscTitles	{
-		#include "tb3\f\tags\rsctitles.hpp"
-	};
+
 	class TB3_Settings {
 		class General {
 			version = 9;
-			processParams = 1;
-			enableSaving = 0;
-			missionMonitor = 1;
+			processParams = 1; //run code set in the code variable of param classes
+			enableSaving = 0; //enable(1)/disable(0) saving in editor
+			missionMonitor = 1; //
 			dynamicViewDistance = 1;
 			spectator = 1;  //0 off, 1 default on: no respawn w/ spectator, 2 spectator activated by variable switch
-			enableNameTags = 1; // nametags on(1) or off (0)
-			enableFlexiMenu = 1; // CBA Fleximenu options on(1) or off (0)
+			enableFlexiMenu = 1; // CBA Fleximenu options on(1) or off (0) - Misnomer as per v10 this uses ACE interact which is presently no longer the same as CBA fleximenu
 			jipTeleport = 1; // Because JIPs are fucking lazy shites.
-		};
-		class NameTags {
-			colour[] = { 0.7, 0.8, 1, 1 }; //Colour for own group's tags (RGBA) leave this blank to revert to the default (white)
-			othercolour[] = { 0.7, 0.8, 1, 1 }; //Colour for other group's tags (RGBA) leave this blank to revert to the default (white)
-			distance = 20;
 		};
 		class MissionMonitor {
 			initDelay 			= 5; 		// delay (in secs) before starting the mission monitor
@@ -132,13 +124,7 @@
 						{"HandGrenade",2},
 						{"SmokeShell",1},
 						{"ACRE_PRC148",1},
-						{"ACRE_PRC343",1},
-						{"cse_tourniquet",1},
-						{"cse_quikclot",2},
-						{"cse_chestseal",1},
-						{"cse_bandage_basic",2},
-						{"cse_bandageElastic",1},
-						{"cse_packing_bandage",1}						
+						{"ACRE_PRC343",1}					
 					};
 				assignedItems[] = {"ItemMap","ItemCompass",	"ItemWatch","ItemGPS"};
 				items[] = {	}; //do not use if using specific allocation of items
@@ -159,20 +145,6 @@
 					{"1Rnd_HE_Grenade_shell",8}
 				};
 				vehCargoItems[] = {
-					{"cse_personal_aid_kit",1},
-					{"cse_bandage_basic",8},						
-					{"cse_bandageElastic",8},
-					{"cse_packing_bandage",4},
-					{"cse_tourniquet",2},
-					{"cse_liquidSkin",2},	
-					{"cse_splint",2},						
-					{"cse_nasopharyngeal_tube",2},
-					{"cse_chestseal",2},
-					{"cse_saline_iv",4},
-					{"cse_morphine",4},
-					{"cse_epinephrine",4},
-					{"cse_atropine",4},
-					{"cse_quikclot",8},
 					{"I_UavTerminal",1},
 					{"ToolKit",1}
 				};
@@ -239,27 +211,26 @@ class CfgDebriefing {
 };
 
 
-
 	
 class Params {
 	class Spacer0  PARAM("");
 	class Spacer1  PARAM("View Distance:");
 	
-	//class ClientViewDistance {	
-	//	title 		= " Client (default)";
-	//	values[] 	= { 600, 1200, 1500, 2000, 2500, 3000 };
-	//	texts[] 	= { "0.6 km", "1.2 km", "1.5 km", "2 km", "2.5 km", "3km" };
-	//	default 	= 2000;
-	//	code 		= "if (!isDedicated) then {setViewDistance %1; tb3_defaultVD = %1;};";
-	//};
+	class ClientViewDistance {	
+		title 		= " Client (default)";
+		values[] 	= { 600, 1200, 1500, 2000, 2500, 3000 };
+		texts[] 	= { "0.6 km", "1.2 km", "1.5 km", "2 km", "2.5 km", "3km" };
+		default 	= 2000;
+		code 		= "if (!isDedicated) then {setViewDistance %1; tb3_defaultVD = %1;};";
+	};
 	
-	//class ServerViewDistance {	
-	//	title 		= " Server";
-	//	values[] 	= { 600, 1200, 1500, 2000, 2500, 3000 };
-	//	texts[] 	= { "0.6 km", "1.2 km", "1.5 km", "2 km", "2.5 km", "3km" };
-	//	default 	= 2000;
-	//	code 		= "if (isDedicated) then {setViewDistance %1; tb3_defaultVD = %1;}; ";
-	//};
+	class ServerViewDistance {	
+		title 		= " Server";
+		values[] 	= { 600, 1200, 1500, 2000, 2500, 3000 };
+		texts[] 	= { "0.6 km", "1.2 km", "1.5 km", "2 km", "2.5 km", "3km" };
+		default 	= 2000;
+		code 		= "if (isDedicated) then {setViewDistance %1; tb3_defaultVD = %1;}; ";
+	};
 	
 	class GlobalViewDistance {	
 		title 		= " Client and Server";
@@ -312,16 +283,16 @@ class Params {
 		code 		= "setTerrainGrid %1";
 	};
 	
-	//class Spacer4  PARAM("");
-	//class Spacer5  PARAM("Mission Settings:");
+	class Spacer4  PARAM("");
+	class Spacer5  PARAM("Mission Settings:");
 	
-	//class TimeLimit 
-	//{
-	//	title 		= " Time Limit";
-	//	values[] 	= { 1800, 2400, 3000, 3600, 4200, 4800, 5400, 6000, 6600, 7200, 999999 }; // seconds
-	//	texts[] 	= { "30 minutes", "40 minutes", "50 minutes", "60 minutes", "70 minutes", "80 minutes", "90 minutes", "100 minutes", "110 minutes", "120 minutes", "No limit"};
-	//	default 	= 5400;
-	//	code 		= "timeLimit = %1";
-	//};
+	class TimeLimit 
+	{
+		title 		= " Time Limit";
+		values[] 	= { 1800, 2400, 3000, 3600, 4200, 4800, 5400, 6000, 6600, 7200, 999999 }; // seconds
+		texts[] 	= { "30 minutes", "40 minutes", "50 minutes", "60 minutes", "70 minutes", "80 minutes", "90 minutes", "100 minutes", "110 minutes", "120 minutes", "No limit"};
+		default 	= 5400;
+		code 		= "timeLimit = %1";
+	};
 };
 	
