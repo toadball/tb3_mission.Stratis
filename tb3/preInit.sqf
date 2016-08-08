@@ -28,7 +28,7 @@ TB3_missionFilePathLength = (count(toArray(__FILE__)) - 18);
 TB3_adminendex = false;
 
 
-TB3_requireVersion = 9; // the required version of the description.ext
+TB3_requireVersion = 816; // the required version of the description.ext
 WCasRate = 0; WCasNum = 0; WStartNum = 0; WCasArr = [];
 ECasRate = 0; ECasNum = 0; EStartNum = 0; ECasArr = [];
 RCasRate = 0; RCasNum = 0; RStartNum = 0; RCasArr = [];

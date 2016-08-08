@@ -2,7 +2,7 @@
 _endCfg = (missionConfigFile >> "CfgDebriefing");
 _endCount 	= count _endCfg;
 _endLoop = true;
-
+_endCon = [];
 
 // keep checking each ending until one of the conditions becomes true
 while { _endLoop } do {

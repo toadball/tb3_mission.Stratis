@@ -10,7 +10,12 @@
 	respawn = "BASE"; //Gonnae no change this pal
 	respawnDelay = 5;
 	respawnDialog = 1;
-	respawnOnStart = 0;
+	respawnOnStart = -1;
+	respawnTemplatesWest[] = {"tb3_tracking"};
+	respawnTemplatesEast[] = {"tb3_tracking"};
+	respawnTemplatesGuer[] = {"tb3_tracking"};
+	respawnTemplatesCiv[] = {"tb3_tracking"};
+	respawnTemplatesVirtual[] = {}; // Virtual players, used mainly in Curator missions
 	disabledAI = 0;
 	ShowGPS = 1;
 	enableDebugConsole = 1; //2 for all, 1 for logged in only, 0 for disabled. Honestly best keeping this at 1 makes the most sense.
@@ -39,13 +44,13 @@
 
 	class TB3_Settings {
 		class General {
-			version = 9;
+			version = 816;
 			processParams = 1; //run code set in the code variable of param classes
 			enableSaving = 0; //enable(1)/disable(0) saving in editor
 			missionMonitor = 1; //
 			dynamicViewDistance = 1;
 			spectator = 1;  //0 off, 1 default on: no respawn w/ spectator, 2 spectator activated by variable switch
-			enableFlexiMenu = 1; // CBA Fleximenu options on(1) or off (0) - Misnomer as per v10 this uses ACE interact which is presently no longer the same as CBA fleximenu
+			enableFlexiMenu = 0; // CBA Fleximenu options on(1) or off (0) - Misnomer as per v10 this uses ACE interact which is presently no longer the same as CBA fleximenu
 			jipTeleport = 1; // Because JIPs are fucking lazy shites.
 		};
 		class MissionMonitor {
@@ -95,72 +100,8 @@
 			};
 		};
 	};	
-	class TB3_Gear {
-		class ExampleSide {
-			class ExampleUnit {
-				babelSpokenLanguages[] = {{"altian"},"altian"};//0 = array of spoken languages inc native, 1 = native spoken language
-				weapons[] = {"tb_arifle_mk21","Binocular"};
-				magazines[] = {	}; //do not use if using specific allocation of magazines
-				backpack[] = {"B_Carryall_oli",0};
-					backpackContents[] = {
-						{"30Rnd_556x45_Stanag",2},
-						{"30Rnd_556x45_Stanag_Tracer_Yellow",1},
-						{"Chemlight_green",2},
-						{"NVGoggles_INDEP",1},
-						{"acc_pointer_IR",1},
-						{"acc_flashlight",1}						
-					};
-				headgear[] = {"tb_alfr_mich_AFPAT"};
-				uniform[] = {"tb_alfr_CombatUniform_AFPAT"};
-					uniformContents[] = {
-						{"30Rnd_556x45_Stanag",1},
-						{"H_Booniehat_indp",1}
-					};
-				goggles[] = {"G_Lowprofile"};
-				vest[] = {"tb_alfr_platecarrier_01"};
-					vestContents[] = {
-						{"30Rnd_556x45_Stanag",4},
-						{"30Rnd_556x45_Stanag_Tracer_Yellow",2},
-						{"HandGrenade",2},
-						{"SmokeShell",1},
-						{"ACRE_PRC148",1},
-						{"ACRE_PRC343",1}					
-					};
-				assignedItems[] = {"ItemMap","ItemCompass",	"ItemWatch","ItemGPS"};
-				items[] = {	}; //do not use if using specific allocation of items
-				
-				priKit[] = {"optic_Hamr"}; //primary weapon attachment/s
-				secKit[] = {}; //launcher weapon attachment/s
-				pisKit[] = {}; //pistol attachment/s
-			};
-			class ExampleVehicle {
-				vehCargoWeapons[] = {{"launch_NLAW_F",2}};
-				vehCargoMagazines[] = {
-					{"30Rnd_556x45_Stanag",10},
-					{"30Rnd_556x45_Stanag_Tracer_Yellow",10},
-					{"200Rnd_65x39_cased_Box",4},
-					{"200Rnd_65x39_cased_Box_Tracer",4},
-					{"HandGrenade",6},
-					{"SmokeShell",6},
-					{"1Rnd_HE_Grenade_shell",8}
-				};
-				vehCargoItems[] = {
-					{"I_UavTerminal",1},
-					{"ToolKit",1}
-				};
-				vehCargoRucks[] = {
-					{"B_Carryall_oli",2}
-				};
-			};		
-			class ExampleUnit2 : ExampleUnit {
-				babelSpokenLanguages[] = {{"english","altian"},"altian"};//0 = array of spoken languages inc native, 1 = native spoken language	
-			};
-			class ExampleUnit3 : ExampleUnit {
-				babelSpokenLanguages[] = {{"english","altian"}};//0 = array of spoken languages inc native, 1 = native spoken language	
-			};
-		};
-	};
 
+#include "tb3\f\loadout\defines.hpp"
 
 class CfgDebriefing {  
 	class End0 {
@@ -190,7 +131,7 @@ class CfgDebriefing {
 		pictureColor[] = {1.0,0.0,0.0,1};
 		condition[] = {((IND_Obj1Flag1 && IND_Obj1Flag2) && (RCasRate > 30))}; //boolean check that will trigger this ending
 	};	
-	class DiffifcultyENDEX {
+	/*class DiffifcultyENDEX {
 		title = "Bad Difficulty Setting";
 		subtitle = "Reload mission at Veteran or Elite difficulty.";
 		description = "Reload mission at Veteran or Elite difficulty.";
@@ -198,11 +139,11 @@ class CfgDebriefing {
 		picture = "waypoint";
 		pictureColor[] = {0.0,0.0,0.0,0};
 		condition[] = {(difficulty < 2)};
-	};
+	};*/
 	class ENDEX {
-		title = "ENDEX by Admin";
+		title = "Mission Ended by Admin";
 		subtitle = "";
-		description = "Mission Called by Admin";
+		description = "Mission Ended by Admin";
 		pictureBackground = "";
 		picture = "waypoint";
 		pictureColor[] = {0.0,0.0,0.0,0};
@@ -210,7 +151,20 @@ class CfgDebriefing {
 	};
 };
 
-
+class CfgRespawnTemplates {
+	// Class used in respawnTemplates entry
+	class tb3_tracking {
+		// Function or script executed upon death. Parameters passed into it are the same as are passed into onPlayerKilled.sqf file [<oldUnit>, <killer>, <respawn>, <respawnDelay>]
+		onPlayerKilled = "\myAddon\scripts\respawnBeacon.sqf";
+		// Function or script executed upon respawn. Parameters passed into it are the same as are passed into onPlayerRespawn.sqf file [<newUnit>, <oldUnit>, <respawn>, <respawnDelay>]
+		onPlayerRespawn = "\myAddon\scripts\respawnBeacon.sqf";
+		// Default respawn delay (can be overwitten by description.ext entry of the same name)
+		respawnDelay = 20;
+		// 1 to respawn player when he joins the game. Available only for INSTANT and BASE respawn types
+		// Can be overridden by description.ext attribute of the same name
+		respawnOnStart = -1;
+	};
+};
 	
 class Params {
 	class Spacer0  PARAM("");

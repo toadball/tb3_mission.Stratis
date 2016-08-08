@@ -35,10 +35,6 @@ tb3_fSetVehCargoWeapons				= compile (preprocessFileLineNumbers "tb3\f\loadout\v
 tb3_fSetVehCargoItems				= compile (preprocessFileLineNumbers "tb3\f\loadout\vehicleCargo\fSetVehCargoItems.sqf");
 tb3_fSetVehCargoBackpacks				= compile (preprocessFileLineNumbers "tb3\f\loadout\vehicleCargo\fSetVehCargoRucks.sqf");
 
-// Name Tag Functions
-tb3_fGetNearUnits				= compile (preprocessFileLineNumbers "tb3\f\tags\fGetNearUnits.sqf");
-tb3_fSetNameTag				= compile (preprocessFileLineNumbers "tb3\f\tags\fSetNameTag.sqf");
-
 // Radio check (by beta, modified for A3) - Non functional with ACRE2 build 501
 //tb3_freqCheck = compile preprocessFileLineNumbers "tb3\f\freqCheck.sqf";
 
