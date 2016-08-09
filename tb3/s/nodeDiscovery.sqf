@@ -23,8 +23,8 @@ switch ( isDedicated ) do
 				tb3_UOadmins = call compile ("[" + (preprocessFile "\x\uo\addons\uo_a3_debugconsole\admins.sqf") + "]");
 				(parseNumber(getPlayerUID player) in tb3_UOadmins);
 			} else {(parseNumber(getPlayerUID player) in (getArray (TB3_Settings >> "Admin" >> "adminUIDs")))};
-		}  else { false }; */
-		
+		}  else { false }; 
+		*/
 		// keep checking if this node is a logged-in admin
 		[] spawn { while { true } do { sleep 10; isAdmin = (serverCommandAvailable "#kick chapple") || !isMultiplayer;	}; };
 	};

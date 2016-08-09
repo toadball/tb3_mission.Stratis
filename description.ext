@@ -2,27 +2,26 @@
 
 	/* Adds screen when loading. */
 	author = Toadball;
-	onLoadName = "CO28_Hotel_Moscow_v1";
+	onLoadName = "TB3_Mission";
 	loadScreen = "tb3\uoLogo.jpg";
-	onLoadMission = "An AAF platoon conducts an attack on an insurgent held compound";	
+	onLoadMission = "Work In Progress";	
 	onLoadMissionTime = true;
-	forceRotorLibSimulation = 1; //force enable
 	respawn = "BASE"; //Gonnae no change this pal
 	respawnDelay = 5;
 	respawnDialog = 1;
 	respawnOnStart = -1;
-	respawnTemplatesWest[] = {"tb3_tracking"};
-	respawnTemplatesEast[] = {"tb3_tracking"};
-	respawnTemplatesGuer[] = {"tb3_tracking"};
-	respawnTemplatesCiv[] = {"tb3_tracking"};
-	respawnTemplatesVirtual[] = {}; // Virtual players, used mainly in Curator missions
+	//respawnTemplatesWest[] = {"tb3_tracking"};
+	//respawnTemplatesEast[] = {"tb3_tracking"};
+	//respawnTemplatesGuer[] = {"tb3_tracking"};
+	//respawnTemplatesCiv[] = {"tb3_tracking"};
+	//respawnTemplatesVirtual[] = {}; // Virtual players, used mainly in Curator missions
 	disabledAI = 0;
 	ShowGPS = 1;
 	enableDebugConsole = 1; //2 for all, 1 for logged in only, 0 for disabled. Honestly best keeping this at 1 makes the most sense.
 	
 	class Header {
 		gameType = Coop;            //DM, Team, Coop, CTI
-		minPlayers = 4;             //min # of players the mission supports
+		minPlayers = 1;             //min # of players the mission supports
 		maxPlayers = 8;            //Max # of players the mission supports
 		playerCountMultipleOf = 1; //Unknown
 	};
@@ -47,10 +46,10 @@
 			version = 816;
 			processParams = 1; //run code set in the code variable of param classes
 			enableSaving = 0; //enable(1)/disable(0) saving in editor
-			missionMonitor = 1; //
+			missionMonitor = 1; //monitor casualties on the server
 			dynamicViewDistance = 1;
 			spectator = 1;  //0 off, 1 default on: no respawn w/ spectator, 2 spectator activated by variable switch
-			enableFlexiMenu = 0; // CBA Fleximenu options on(1) or off (0) - Misnomer as per v10 this uses ACE interact which is presently no longer the same as CBA fleximenu
+			enableFlexiMenu = 0; // TO BE MOVED TO OTHER AREA CBA Fleximenu options on(1) or off (0) - Misnomer as per 816 this uses ACE interact which is presently no longer the same as CBA fleximenu
 			jipTeleport = 1; // Because JIPs are fucking lazy shites.
 		};
 		class MissionMonitor {
@@ -159,7 +158,7 @@ class CfgRespawnTemplates {
 		// Function or script executed upon respawn. Parameters passed into it are the same as are passed into onPlayerRespawn.sqf file [<newUnit>, <oldUnit>, <respawn>, <respawnDelay>]
 		onPlayerRespawn = "\myAddon\scripts\respawnBeacon.sqf";
 		// Default respawn delay (can be overwitten by description.ext entry of the same name)
-		respawnDelay = 20;
+		respawnDelay = 3;
 		// 1 to respawn player when he joins the game. Available only for INSTANT and BASE respawn types
 		// Can be overridden by description.ext attribute of the same name
 		respawnOnStart = -1;

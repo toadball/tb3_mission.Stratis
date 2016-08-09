@@ -14,7 +14,7 @@ diag_log text "";
 diag_log text format["|=============================  %1 @ %2 =============================|", missionName, worldName]; 
 diag_log text "";
 diag_log text " tb3 template 0.9";
-diag_log text format[" init method: %1", _this select 0];
+diag_log text format[" init method: %1", string(_this select 0)];
 diag_log text "";
 diag_log text "|======================================================================================|"; 
 diag_log text "";
