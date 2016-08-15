@@ -10,7 +10,7 @@ _layerNoise = "tb3_playerDeath_noise" call bis_fnc_rscLayer;
 _layerInterlacing = "tb3_playerDeath_interlacing" call bis_fnc_rscLayer;
 _layerStatic = "tb3_playerDeath_static" call bis_fnc_rscLayer;
 		
-while {true} do {
+while {!_specActive} do {
 	while {alive player} do {sleep 0.2};
 	//Static effect on death
 	_layerStatic cutrsc ["RscStatic","plain"]; //RGB screen blip
